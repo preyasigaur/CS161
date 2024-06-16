@@ -1,0 +1,41 @@
+net
+{
+	propagationenginegenerator1791944048146838126L = "edu.ucla.belief.approx.BeliefPropagationSettings@13decd8d";
+	recoveryenginegenerator6944530267470113528l = "edu.ucla.util.SettingsImpl@43048f8b";
+	jenginegenerator6060830225489488864L = "edu.ucla.belief.inference.JoinTreeSettings@58fcda50";
+	node_size = (130.0 55.0);
+}
+
+node Disease
+{
+	states = ("have_disease" "no_disease" );
+	position = (58 -37);
+	diagnosistype = "AUXILIARY";
+	DSLxSUBMODEL = "Root Submodel";
+	ismapvariable = "false";
+	ID = "variable0";
+	label = "Disease";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+node TestResult
+{
+	states = ("Positive" "Negative" );
+	position = (217 -224);
+	diagnosistype = "AUXILIARY";
+	DSLxSUBMODEL = "Root Submodel";
+	ismapvariable = "false";
+	ID = "variable1";
+	label = "Test Result";
+	DSLxEXTRA_DEFINITIONxDIAGNOSIS_TYPE = "AUXILIARY";
+	excludepolicy = "include whole CPT";
+}
+potential ( Disease | )
+{
+	data = (	0.001	0.999	);
+}
+potential ( TestResult | Disease )
+{
+	data = ((	0.95	0.05	)
+		(	0.02	0.98	));
+}

@@ -1,0 +1,51 @@
+3 Solve SAT with RSat
+
+1. The CNF generated from graph 1 with k = 3 colours (graph1_3.cnf) is UNSATISFIABLE. When we run the SAT with RSat, we get the following output: 
+    c Parsing...
+    c ==============================================================================
+    c |           |     ORIGINAL     |              LEARNT              |          |
+    c | Conflicts | Clauses Literals |   Limit Clauses Literals  Lit/Cl | Progress |
+    c ==============================================================================
+    c |         0 |      64      135 |      19       0        0     nan |  0.000 % |
+    c |         0 |      42      138 |      --       0       --      -- |     --   | -22/3
+    c ==============================================================================
+    c Result  :   #vars: 10   #clauses: 42   #literals: 138
+    c CPU time:   0.000826 s
+    c ==============================================================================
+    c CNF stats: (10 vars, 42 clauses)
+    c Decisions: 5
+    c Conflicts: 6
+    c Running time: 0.00071 seconds
+    s UNSATISFIABLE
+
+2. The CNF generated from graph 1 with k = 4 colours (graph1_4.cnf) is SATISFIABLE. When we run the SAT with RSat, we get the following output:
+    c Parsing...
+    c ==============================================================================
+    c |           |     ORIGINAL     |              LEARNT              |          |
+    c | Conflicts | Clauses Literals |   Limit Clauses Literals  Lit/Cl | Progress |
+    c ==============================================================================
+    c |         0 |      97      208 |      29       0        0     nan |  0.000 % |
+    c |         0 |      64      236 |      --       0       --      -- |     --   | -33/28
+    c ==============================================================================
+    c Result  :   #vars: 17   #clauses: 64   #literals: 236
+    c CPU time:   0 s
+    c ==============================================================================
+    c CNF stats: (17 vars, 64 clauses)
+    c Decisions: 11
+    c Conflicts: 0
+    c Running time: 0.00000 seconds
+    s SATISFIABLE
+
+
+3. From the answers of these two SAT instances we can conclude that the graph is not 3 colourable, however, it is 4 colourable. This means that at least 4 colours are required for using distinct colours for every connected node. The following is a solution to the graph colouring problem with k = 4.
+    Let, k = 4 : k = {Cyan(C), Magenta(M), Yellow(Y), Purple(P)}, the assignment of the nodes can be as follows:
+    1: M 
+    5: C
+    6: Y
+    7: P
+    2: C
+    4: P
+    3: Y
+As we can see no 2 nodes with an edge have have same colouring. Therefore, this is the solution for the graph 1 problem.    
+
+4. The minimum number of colours required to colour graph2.txt is 8. 
